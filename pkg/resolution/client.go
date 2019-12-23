@@ -1,4 +1,4 @@
-package client
+package resolution
 
 import (
 	"fmt"
@@ -7,17 +7,17 @@ import (
 	"github.com/aws/aws-sdk-go/service/secretsmanager/secretsmanageriface"
 )
 
-type Client struct {
+type Resolver struct {
 	secretsmanager secretsmanageriface.SecretsManagerAPI
 }
 
-func NewClientWithContext() (*Client, error) {
+func NewResolverWithContext() (*Resolver, error) {
 	sess, err := session.NewSession()
 	if err != nil {
 		return nil, fmt.Errorf("failed to init session: %v", err)
 	}
 
-	return &Client{
+	return &Resolver{
 		secretsmanager: secretsmanager.New(sess),
 	}, nil
 }

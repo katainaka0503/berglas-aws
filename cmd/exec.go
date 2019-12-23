@@ -18,7 +18,7 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/katainaka0503/hogehogecli/pkg/exec"
+	"github.com/katainaka0503/berglas-aws/pkg/exec"
 	"github.com/spf13/cobra"
 	"os"
 )

@@ -3,7 +3,7 @@ package exec
 import (
 	"errors"
 	"fmt"
-	"github.com/katainaka0503/hogehogecli/pkg/resolver"
+	"github.com/katainaka0503/berglas-aws/pkg/resolution"
 	"os"
 	"os/exec"
 	"os/signal"
@@ -20,7 +20,7 @@ var (
 )
 
 func Exec(command string, args []string) error {
-	client, err := client.NewClientWithContext()
+	resolver, err := resolution.NewResolverWithContext()
 	if err != nil {
 		return misuseError(err)
 	}
@@ -35,11 +35,11 @@ func Exec(command string, args []string) error {
 
 		name, value := keyAndValue[0], keyAndValue[1]
 
-		if !client.IsResolvable(value) {
+		if resolution.IsResolvable(value) {
 			continue
 		}
 
-		fetchedValue, err := client.Resolve(value)
+		fetchedValue, err := resolver.Resolve(value)
 		if err != nil {
 			return fetchError(fmt.Errorf("failed to fetch value of %v=%v: %w", name, value, err))
 		}

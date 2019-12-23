@@ -1,4 +1,4 @@
-module github.com/katainaka0503/hogehogecli
+module github.com/katainaka0503/berglas-aws
 
 go 1.13
 

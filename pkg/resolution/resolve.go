@@ -1,4 +1,4 @@
-package client
+package resolution
 
 import (
 	"fmt"
@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func (c *Client) Resolve(url string) (string, error) {
+func (c *Resolver) Resolve(url string) (string, error) {
 	schemeAndArn := strings.SplitN(url, "://", 2)
 
 	if len(schemeAndArn) != 2 || schemeAndArn[0] != "berglas-aws" {
@@ -30,7 +30,7 @@ func (c *Client) Resolve(url string) (string, error) {
 
 // returns whether value is in a format of below or not
 // berglas-aws://arn:${Partition}:secretsmanager:${Region}:${Account}:secret:${SecretId}
-func (c *Client) IsResolvable(url string) bool {
+func IsResolvable(url string) bool {
 	schemeAndArn := strings.SplitN(url, "://", 2)
 
 	if len(schemeAndArn) != 2 || schemeAndArn[0] != "berglas-aws" {
