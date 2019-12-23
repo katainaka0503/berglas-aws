@@ -1,6 +1,5 @@
 FROM alpine:3.11
 
-ADD berglas-aws_linux /berglas-aws
+ADD berglas-aws_linux /usr/local/bin/berglas-aws
 
-ENTRYPOINT ["/bin/sh", "-c"]
-CMD ["./berglas-aws"]
+CMD ["berglas-aws"]
