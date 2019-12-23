@@ -24,4 +24,4 @@
 
 # End of https://www.gitignore.io/api/go
 
-berglas-aws
+berglas-aws*
