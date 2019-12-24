@@ -11,16 +11,12 @@ clean:
 	$(GOCMD) clean
 
 .PHONY: build
-build: build-bin-linux
+build: lint
 	$(DOCKER) build . -t $(DOCKER_REPOSITORY):$(shell $(GET_TAG))
 
 .PHONY: build-bin
 build-bin: lint
 	$(GOCMD) build -o $(BINARY_NAME)
-
-.PHONY: build-bin-linux
-build-bin-linux: lint
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 $(GOCMD) build -o $(BINARY_NAME_LINUX)
 
 .PHONY: lint
 lint:
